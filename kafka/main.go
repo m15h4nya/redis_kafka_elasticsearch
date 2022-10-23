@@ -21,7 +21,7 @@ func main() {
 	}
 
 	w := &kafka.Writer{
-		Addr:                   kafka.TCP("redis_kafka_elastic-kafka-1:9092"),
+		Addr:                   kafka.TCP("kafka:9093"),
 		Topic:                  "test_topic",
 		Balancer:               &kafka.LeastBytes{},
 		AllowAutoTopicCreation: true,
