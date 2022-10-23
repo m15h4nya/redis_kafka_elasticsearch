@@ -10,7 +10,7 @@ import (
 
 func main() {
 	c := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:   []string{"redis_kafka_elastic-kafka-1:9092"}, // kafka_broker: from docker-compose network
+		Brokers:   []string{"kafka:9092"}, // kafka_broker: from docker-compose network
 		Topic:     "test_topic",
 		GroupID:   "AnyGroup",
 		Partition: 0,
@@ -40,6 +40,9 @@ func main() {
 
 	mapping := `{
 		"mappings": {
+			"settings": {
+				"number_of_replicas": 0
+			}
 			"properties": {
 				"name": {"type": "keyword"},
 				"surname": {"type": "keyword"},
